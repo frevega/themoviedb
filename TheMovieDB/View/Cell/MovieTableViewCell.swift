@@ -5,11 +5,13 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet
     private weak var movieImage: UIImageView!
     @IBOutlet
-    weak var movieTitle: UILabel!
+    private weak var movieTitle: UILabel!
     @IBOutlet
-    weak var movieVotes: UILabel!
+    private weak var movieVotes: UILabel!
     @IBOutlet
-    weak var movieOverview: UILabel!
+    private weak var moviePopularity: UILabel!
+    @IBOutlet
+    private weak var movieOverview: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +21,7 @@ class MovieTableViewCell: UITableViewCell {
         imageUrl: String,
         title: String,
         votes: String,
+        popularity: String,
         overview: String
     ) {
         if let url = URL(string: imageUrl) {
@@ -26,7 +29,8 @@ class MovieTableViewCell: UITableViewCell {
         }
         movieTitle.text = title
         movieVotes.text = votes
-        //movieOverview.text = overview
+        moviePopularity.text = popularity
+        movieOverview.text = overview
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +41,7 @@ class MovieTableViewCell: UITableViewCell {
         movieImage.image = UIImage(named: "placeholder")
         movieTitle.text = nil
         movieVotes.text = nil
-        //movieOverview.text = nil
+        moviePopularity.text = nil
+        movieOverview.text = nil
     }
 }

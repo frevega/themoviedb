@@ -6,13 +6,17 @@ class MovieListViewDatasource: NSObject {
     var popularMovies = [MovieView]() {
         didSet {
             updatePopularMovies()
+            view?.expandedIndexPath = IndexPath(row: -1, section: -1)
             view?.reloadTableView()
+            view?.goToFirstRowInTable()
         }
     }
     var topRatedMovies = [MovieView]() {
         didSet {
             updateTopRatedMovies()
+            view?.expandedIndexPath = IndexPath(row: -1, section: -1)
             view?.reloadTableView()
+            view?.goToFirstRowInTable()
         }
     }
     
@@ -47,6 +51,7 @@ extension MovieListViewDatasource: UITableViewDataSource {
             imageUrl: movieView.posterPath,
             title: movieView.title,
             votes: movieView.voteCount,
+            popularity: movieView.popularity,
             overview: movieView.overview
         )
         

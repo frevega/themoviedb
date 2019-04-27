@@ -27,7 +27,7 @@ class FormatHelper {
     class func string(from number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
         formatter.numberStyle = .decimal
         
         return formatter.string(from: NSNumber(value: number)) ?? ""

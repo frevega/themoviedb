@@ -11,6 +11,8 @@ class MovieListViewController: UIViewController {
     private var popularButton: UIBarButtonItem?
     private var topRatedButton: UIBarButtonItem?
     
+    var expandedIndexPath = IndexPath(row: -1, section: -1)
+    
     init(presenter: Presenter,
          delegate: MovieListViewDelegate,
          datasource: MovieListViewDatasource
@@ -77,6 +79,10 @@ class MovieListViewController: UIViewController {
     
     func endOfTableReached() {
         popularButton!.isEnabled ? presenter?.topRatedMovies() : presenter?.popularMovies()
+    }
+    
+    func goToFirstRowInTable() {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
 
